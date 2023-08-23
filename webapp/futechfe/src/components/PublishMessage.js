@@ -20,6 +20,7 @@ export default function PublishMessage() {
     }).then(() => {
       console.log("New msg sent.");
     });
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function PublishMessage() {
   return (
     <Container>
       <Paper elevation={3} style={paperStyle}>
-        <h1 style={{ color: "blue" }}>Publish message to the Broker</h1>
+        <h1>Publish message to the Broker</h1>
         <form
           component="form"
           sx={{
@@ -63,16 +64,14 @@ export default function PublishMessage() {
           </Button>
         </form>
       </Paper>
-      <h1>Messages</h1>
       <Paper elevation={3} style={paperStyle}>
+        <h1>Messages</h1>
         {msgs.map((msg) => (
           <Paper
             elevation={6}
             style={{ margin: "10px", padding: "15px", textAlign: "left" }}
             key={msg.id}
           >
-            ID : {msg.id}
-            <br></br>
             Source : {msg.source}
             <br></br>
             Message : {msg.message}
