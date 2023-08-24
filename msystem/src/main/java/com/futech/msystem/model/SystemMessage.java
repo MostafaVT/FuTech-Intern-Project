@@ -22,6 +22,8 @@ public class SystemMessage {
     private Date sentTimeStamp;
     private Date ACKTimeStamp;
     private boolean inAction;
+    @ManyToOne
+    @JoinColumn(name="producerProfile_id", nullable=false)
     private ProducerProfile producerProfile;
 
     public SystemMessage(){}

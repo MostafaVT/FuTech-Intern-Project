@@ -22,5 +22,6 @@ public class MessageConsumer {
     public void messageListener(SystemMessage systemMessage) {
         LOGGER.info("Message received! {}", systemMessage);
         messageService.saveMSG(systemMessage);
+
     }
 }

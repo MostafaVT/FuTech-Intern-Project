@@ -23,7 +23,7 @@ public class ProducerProfile {
     private InetAddress IP;
     private String location;
     private String currentBrokerConnection;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "producerProfile")
     private List<SystemMessage> systemMessagesArray = new ArrayList<>();
 
     public ProducerProfile(){}

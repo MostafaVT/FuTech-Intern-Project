@@ -28,6 +28,9 @@ export default function PublishMessage() {
       .then((res) => res.json())
       .then((result) => {
         setMsgs(result);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
