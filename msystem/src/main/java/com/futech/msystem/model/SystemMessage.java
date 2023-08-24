@@ -1,52 +1,29 @@
 package com.futech.msystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
+@Getter
+@Setter
+@ToString
 @Entity
 public class SystemMessage {
-    //rec.-send----date-time
-    //`ATS 1135..mqtt5`
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
     private String source;
-    private String message;
+    private String content;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date sentTimeStamp;
+    private Date ACKTimeStamp;
+    private boolean inAction;
+    private ProducerProfile producerProfile;
 
-    public SystemMessage() {
-    }
+    public SystemMessage(){}
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String toString() {
-        return "SystemMessage{" +
-                "source='" + source + '\'' +
-                ", message='" + message + '\'' +
-                '}';
-    }
 }

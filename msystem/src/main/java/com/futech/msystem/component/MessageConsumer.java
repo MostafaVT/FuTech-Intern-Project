@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageConsumer {
     //consumer Client info.{name-id-ip-SystemMessages}
-    //users info.
     @Autowired
     private JmsTemplate jmsTemplate;
     @Autowired

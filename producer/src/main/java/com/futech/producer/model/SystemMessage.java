@@ -1,43 +1,23 @@
 package com.futech.producer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+import java.util.Date;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 public class SystemMessage {
     @JsonIgnore
     private int id;
     private String source;
-    private String message;
-
-    public SystemMessage() {
-    }
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String toString() {
-        return "SystemMessage{" +
-                "source='" + source + '\'' +
-                ", message='" + message + '\'' +
-                '}';
-    }
+    private String content;
+    private Date sentTimeStamp;
+    private Date ACKTimeStamp;
+    private boolean inAction;
 }

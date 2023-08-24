@@ -19,10 +19,6 @@ public class JmsConfig {
     @Bean
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
-
-//        converter.setTargetType(MessageType.TEXT);
-//        converter.setTypeIdPropertyName("_type");
-
         Map<String, Class<?>> typeIdMappings = new HashMap<String, Class<?>>();
         typeIdMappings.put("JMS_TYPE", SystemMessage.class);
         converter.setTypeIdMappings(typeIdMappings);
@@ -30,5 +26,4 @@ public class JmsConfig {
         converter.setTypeIdPropertyName("JMS_TYPE");
         return converter;
     }
-
 }
