@@ -3,14 +3,14 @@ import TextField from "@mui/material/TextField";
 import { Container, Paper, Button } from "@mui/material";
 
 export default function PublishMessage() {
-  const paperStyle = { padding: "50px 20px", width: 600, margin: "20px auto" };
+  const paperStyle = { padding: "50px 20px", margin: "20px auto" };
   const [source, setSource] = useState("");
-  const [message, setMessage] = useState("");
+  const [content, setContent] = useState("");
   const [msgs, setMsgs] = useState([]);
 
   const handleClick = (e) => {
     e.preventDefault();
-    const msg = { source, message };
+    const msg = { source, content };
     console.log(msg);
 
     fetch("http://localhost:8081/publishMessage", {
@@ -37,7 +37,7 @@ export default function PublishMessage() {
   return (
     <Container>
       <Paper elevation={3} style={paperStyle}>
-        <h1>Publish message to the Broker</h1>
+        <h4>Publish Message to the Broker</h4>
         <form
           component="form"
           sx={{
@@ -59,8 +59,8 @@ export default function PublishMessage() {
             label="Message"
             variant="outlined"
             fullWidth
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
           />
           <Button variant="contained" onClick={handleClick}>
             Publish
@@ -68,7 +68,7 @@ export default function PublishMessage() {
         </form>
       </Paper>
       <Paper elevation={3} style={paperStyle}>
-        <h1>Messages</h1>
+        <h4>Live Messages</h4>
         {msgs.map((msg) => (
           <Paper
             elevation={6}
@@ -77,7 +77,7 @@ export default function PublishMessage() {
           >
             Source : {msg.source}
             <br></br>
-            Message : {msg.message}
+            Content : {msg.content}
           </Paper>
         ))}
       </Paper>

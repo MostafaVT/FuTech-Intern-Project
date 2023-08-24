@@ -21,7 +21,10 @@ public class SystemMessage {
     @Temporal(TemporalType.TIMESTAMP)
     private Date sentTimeStamp;
     private Date ACKTimeStamp;
-    private boolean inAction;
+    @OneToOne(cascade = CascadeType.ALL)
+    private User ACKUser;
+    private boolean isACK;
+    private boolean isAction;
     @ManyToOne
     @JoinColumn(name="producerProfile_id", nullable=false)
     private ProducerProfile producerProfile;
