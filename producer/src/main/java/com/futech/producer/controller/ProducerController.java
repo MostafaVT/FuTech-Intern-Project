@@ -22,7 +22,6 @@ public class ProducerController {
     public ResponseEntity<String> publishMessage(@RequestBody SystemMessage systemMessage) {
         try {
             messageProducer.sendTo("test", systemMessage);
-
             return new ResponseEntity<>("Sent.", HttpStatus.OK);
 
         } catch (Exception e) {

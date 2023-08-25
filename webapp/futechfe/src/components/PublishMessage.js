@@ -12,7 +12,6 @@ export default function PublishMessage() {
     e.preventDefault();
     const msg = { source, content };
     console.log(msg);
-
     fetch("http://localhost:8081/publishMessage", {
       method: "Post",
       headers: { "Content-Type": "application/json" },

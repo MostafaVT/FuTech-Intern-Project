@@ -1,7 +1,6 @@
 import React from "react";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
@@ -10,22 +9,19 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { useNavigate } from "react-router-dom";
 import Appbar from "../components/Appbar";
 
-const Login = () => {
+export default function Login() {
   const [showPass, setShowPass] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   return (
-    <div
-      className={`items-center flex h-screen flex-col w-screen justify-center bg-[url("assets/logo.jpg")] bg-cover bg-center`}
-    >
+    <div>
       <Appbar></Appbar>
-
       <Paper
-        elevation={5}
-        className="rounded items-center justify-center flex flex-col p-3.5 max-w-sm"
+        elevation={10}
+        style={{ padding: "25px 10px", width: "50%", margin: "20px auto" }}
       >
-        <span className="text-xl my-5">Login Form</span>
+        <h2>Login Page</h2>
         <OutlinedInput
           style={{ padding: "5px", margin: "5px" }}
           placeholder="Email"
@@ -40,16 +36,6 @@ const Login = () => {
           size="small"
           onChange={(e) => setPassword(e.target.value)}
           type={showPass ? "text" : "password"}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => setShowPass(!showPass)}
-              >
-                {!showPass ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
         />
         <Button fullWidth={true} variant="contained" style={{ margin: "5px" }}>
           Login
@@ -57,14 +43,12 @@ const Login = () => {
         <br />
         <Button
           variant="contained"
-          style={{ margin: "5px", backgroundColor: "green" }}
-          onClick={() => navigate("/signUp")}
+          style={{ margin: "25px", backgroundColor: "green" }}
+          onClick={() => navigate("/register")}
         >
           Create New Account
         </Button>
       </Paper>
     </div>
   );
-};
-
-export default Login;
+}

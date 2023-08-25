@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class MessageServiceImpl implements MessageService {
-
     @Autowired
     private MessageRepository messageRepository;
     @Override

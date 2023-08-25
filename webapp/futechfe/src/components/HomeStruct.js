@@ -3,6 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import PublishMessage from "./PublishMessage";
 import ScrollspyACK from "./ScrollspyACK";
 import ActionTab from "./ActionTab";
+import ProducerProfile from "./ProducerProfileTab";
+import MapTap from "./MapTap";
 
 export default function HomeStruct() {
   return (
@@ -20,8 +22,12 @@ export default function HomeStruct() {
           </Col>
         </Row>
         <Row>
-          <Col>1 of 2</Col>
-          <Col>2 of 2</Col>
+          <Col>
+            <ProducerProfile></ProducerProfile>
+          </Col>
+          <Col>
+            <MapTap></MapTap>
+          </Col>
         </Row>
       </Container>
     </div>

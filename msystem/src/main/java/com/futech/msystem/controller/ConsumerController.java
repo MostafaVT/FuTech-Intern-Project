@@ -1,11 +1,13 @@
 package com.futech.msystem.controller;
 
 import com.futech.msystem.model.SystemMessage;
-import com.futech.msystem.service.MessageService;
+import com.futech.msystem.model.User;
+import com.futech.msystem.service.MessageServiceImpl;
+import com.futech.msystem.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,9 +15,23 @@ import java.util.List;
 @CrossOrigin
 public class ConsumerController {
     @Autowired
-    MessageService messageService;
+    private MessageServiceImpl messageServiceImpl;
+    @Autowired
+    private UserServiceImpl userServiceImpl;
+
     @GetMapping("/getAll")
     public List<SystemMessage> getSavedMessages() {
-        return messageService.getAllMSG();
+        return messageServiceImpl.getAllMSG();
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> registerUser(@RequestBody User user) {
+        try {
+            userServiceImpl.saveUser(user);
+            return new ResponseEntity<>("registered.", HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

@@ -13,7 +13,7 @@ export default function altfooter() {
           style={{ "background-color": "#6351ce" }}
         >
           <div class="me-5">
-            <span>Get connected with us on social networks:</span>
+            <span>Get connected with us on social networks :</span>
           </div>
 
           <div>
@@ -100,10 +100,22 @@ export default function altfooter() {
                   }}
                 />
                 <p>
-                  <a class="text-white">Your Account</a>
+                  <a href="/login" class="text-white">
+                    Your Account
+                  </a>
                 </p>
                 <p>
-                  <a class="text-white">Help</a>
+                  <a href="https://activemq.apache.org/" class="text-white">
+                    Apache ActiveMQ
+                  </a>
+                </p>
+                <p>
+                  <a
+                    href="https://spring.io/guides/gs/messaging-jms/"
+                    class="text-white"
+                  >
+                    Spring Boot JMS
+                  </a>
                 </p>
               </div>
 

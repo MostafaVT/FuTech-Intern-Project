@@ -19,5 +19,8 @@ public class SystemMessage {
     private String content;
     private Date sentTimeStamp;
     private Date ACKTimeStamp;
-    private boolean inAction;
+    private User ACKUser;
+    private boolean isACK;
+    private boolean isAction;
+    private ProducerProfile producerProfile;
 }

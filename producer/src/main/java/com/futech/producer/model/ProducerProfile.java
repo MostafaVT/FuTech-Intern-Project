@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,4 +19,5 @@ public class ProducerProfile {
     private InetAddress IP;
     private String location;
     private String currentBrokerConnection;
+    private List<SystemMessage> systemMessagesArray = new ArrayList<>();
 }
