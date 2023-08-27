@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class User {
-    private int ID;
+    private int id;
     private String username;
     private String firstName;
     private String lastName;

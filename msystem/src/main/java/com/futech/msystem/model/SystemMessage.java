@@ -25,9 +25,6 @@ public class SystemMessage {
     private User ACKUser;
     private boolean isACK;
     private boolean isAction;
-    @ManyToOne
-    @JoinColumn(name="producerProfile_id", nullable=false)
-    private ProducerProfile producerProfile;
 
     public SystemMessage(){}
 

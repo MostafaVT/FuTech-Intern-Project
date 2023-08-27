@@ -20,12 +20,12 @@ export default function RegisterPage() {
     e.preventDefault();
     const user = { username, firstName, lastName, email, password };
     console.log(user);
-    fetch("http://localhost:8081/register", {
+    let response = fetch("http://localhost:8080/register", {
       method: "Post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     }).then(() => {
-      console.log("New user register.");
+      console.log(response.json);
     });
   };
 

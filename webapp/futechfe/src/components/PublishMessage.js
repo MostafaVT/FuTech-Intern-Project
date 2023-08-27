@@ -12,18 +12,18 @@ export default function PublishMessage() {
     e.preventDefault();
     const msg = { source, content };
     console.log(msg);
-    fetch("http://localhost:8081/publishMessage", {
+    let response = fetch("http://localhost:8081/jms/publishMessage", {
       method: "Post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(msg),
     }).then(() => {
-      console.log("New msg sent.");
+      console.log(response.json);
     });
     window.location.reload();
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/getAll")
+    let response = fetch("http://localhost:8080/jms/getAll")
       .then((res) => res.json())
       .then((result) => {
         setMsgs(result);
@@ -46,6 +46,7 @@ export default function PublishMessage() {
           autoComplete="off"
         >
           <TextField
+            style={{ padding: "5px", margin: "5px" }}
             id="outlined-basic"
             label="Source"
             variant="outlined"
@@ -54,6 +55,7 @@ export default function PublishMessage() {
             onChange={(e) => setSource(e.target.value)}
           />
           <TextField
+            style={{ padding: "5px", margin: "5px" }}
             id="outlined-basic"
             label="Message"
             variant="outlined"
@@ -61,7 +63,11 @@ export default function PublishMessage() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <Button variant="contained" onClick={handleClick}>
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            style={{ padding: "5px", margin: "5px" }}
+          >
             Publish
           </Button>
         </form>

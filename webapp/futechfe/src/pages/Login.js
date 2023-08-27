@@ -1,10 +1,7 @@
 import React from "react";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { useNavigate } from "react-router-dom";
 import Appbar from "../components/Appbar";
@@ -14,6 +11,20 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const loginTry = { email, password };
+    console.log(loginTry);
+    let response = fetch("http://localhost:8080/login", {
+      method: "Post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(loginTry),
+    }).then(() => {
+      console.log(response.json);
+    });
+  };
+
   return (
     <div>
       <Appbar></Appbar>
@@ -37,7 +48,12 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
           type={showPass ? "text" : "password"}
         />
-        <Button fullWidth={true} variant="contained" style={{ margin: "5px" }}>
+        <Button
+          fullWidth={true}
+          variant="contained"
+          style={{ margin: "5px" }}
+          onClick={handleClick}
+        >
           Login
         </Button>
         <br />

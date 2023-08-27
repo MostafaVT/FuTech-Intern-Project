@@ -22,5 +22,4 @@ public class SystemMessage {
     private User ACKUser;
     private boolean isACK;
     private boolean isAction;
-    private ProducerProfile producerProfile;
 }

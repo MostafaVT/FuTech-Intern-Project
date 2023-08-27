@@ -2,6 +2,7 @@ package com.futech.msystem.config;
 
 import com.futech.msystem.model.SystemMessage;
 import jakarta.jms.ConnectionFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

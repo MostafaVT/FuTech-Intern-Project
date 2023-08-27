@@ -14,10 +14,9 @@ import java.util.List;
 @ToString
 public class ProducerProfile {
     @JsonIgnore
-    private int ID;
+    private int id;
     private String name;
     private InetAddress IP;
     private String location;
     private String currentBrokerConnection;
-    private List<SystemMessage> systemMessagesArray = new ArrayList<>();
 }

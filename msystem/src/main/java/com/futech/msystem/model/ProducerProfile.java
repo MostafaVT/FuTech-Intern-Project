@@ -18,13 +18,11 @@ public class ProducerProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
-    private int ID;
+    private int id;
     private String name;
     private InetAddress IP;
     private String location;
     private String currentBrokerConnection;
-    @OneToMany(mappedBy = "producerProfile")
-    private List<SystemMessage> systemMessagesArray = new ArrayList<>();
 
     public ProducerProfile(){}
 
