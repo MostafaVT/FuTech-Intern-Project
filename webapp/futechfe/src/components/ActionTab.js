@@ -10,34 +10,60 @@ const div_style = {
 };
 
 export default function ActionTab() {
-  const [dataSource, setDataSource] = useState(Array.from({ length: 20 }));
+  const [ActionMsgs, setActionMsgs] = useState([]);
+  const [id, setID] = useState("");
+  const [source, setSource] = useState("");
+  const [content, setContent] = useState("");
   const [hasMore, setHasMore] = useState(true);
-  const fetchMoreData = () => {
-    if (dataSource.length < 200) {
-      setTimeout(() => {
-        setDataSource(dataSource.concat(Array.from({ length: 20 })));
-      }, 500);
-    } else {
-      setHasMore(false);
-    }
-  };
   const paperStyle = { padding: "50px 20px", margin: "20px auto" };
+
+  const fetchMoreData = () => {
+    // if (dataSource.length < 200) {
+    //   setTimeout(() => {
+    //     setDataSource(dataSource.concat(Array.from({ length: 20 })));
+    //   }, 500);
+    // } else {
+    //   setHasMore(false);
+    // }
+  };
+
+  useEffect(() => {
+    let response = fetch("http://localhost:8080/jms/getAction")
+      .then((res) => res.json())
+      .then((result) => {
+        setActionMsgs(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <Paper elevation={8} style={paperStyle}>
       <h4>Action Tab</h4>
       <div id="parentScrollDiv" style={{ height: 500, overflow: "auto" }}>
         <InfiniteScroll
-          dataLength={dataSource.length}
+          dataLength={ActionMsgs.length}
           next={fetchMoreData}
           hasMore={hasMore}
-          loader={<p>WAIT...</p>}
+          // loader={<p>WAIT...</p>}
           endMessage={<p>200 message limit has been reached.</p>}
-          // height={500}
           scrollableTarget="parentScrollDiv"
         >
-          {dataSource.map((item, index) => {
-            return <div style={div_style}>This is MSG number #{index + 1}</div>;
+          {ActionMsgs.map((msg = { id, content, source }) => {
+            return (
+              <Paper
+                elevation={6}
+                style={{ margin: "10px", padding: "15px", textAlign: "left" }}
+                key={msg.id}
+              >
+                ID : {msg.id}
+                <br></br>
+                Source : {msg.source}
+                <br></br>
+                Content : {msg.content}
+              </Paper>
+            );
           })}
         </InfiniteScroll>
       </div>

@@ -17,7 +17,6 @@ import java.util.List;
 public class ProducerProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private int id;
     private String name;
     private InetAddress IP;

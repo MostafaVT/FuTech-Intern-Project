@@ -22,5 +22,32 @@ public class ConsumerController {
         return messageServiceImpl.getAllMSG();
     }
 
+    @GetMapping("/getACK")
+    public List<SystemMessage> getACKMessages() {
+        return messageServiceImpl.getACKMSG();
+    }
+
+    @GetMapping("/getAction")
+    public List<SystemMessage> getActionMessages() {
+        return messageServiceImpl.getActionMSG();
+    }
+
+    @GetMapping("/getMSG")
+    public SystemMessage getActionMessages(@RequestParam int id) {
+        return messageServiceImpl.getMSG(id);
+    }
+
+    @GetMapping("/setACK")
+    public ResponseEntity<SystemMessage> setACKMessage(@RequestParam int id) {
+        return new ResponseEntity<SystemMessage>(messageServiceImpl.setACK(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/setAction")
+    public ResponseEntity<SystemMessage> setActionMessage(@RequestParam int id) {
+        return new ResponseEntity<SystemMessage>(messageServiceImpl.setAction(id),HttpStatus.OK);
+    }
+
+
+
 
 }

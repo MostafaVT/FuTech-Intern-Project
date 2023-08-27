@@ -8,4 +8,7 @@ public interface MessageService {
     public SystemMessage saveMSG(SystemMessage msg);
     public List<SystemMessage> getAllMSG();
 
+    List<SystemMessage> getACKMSG();
+
+    List<SystemMessage> getActionMSG();
 }

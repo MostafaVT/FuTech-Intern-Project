@@ -13,12 +13,12 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 public class SystemMessage {
-    @JsonIgnore
     private int id;
     private String source;
     private String content;
     private Date sentTimeStamp;
     private Date ACKTimeStamp;
+    private Date actionTimeStamp;
     private User ACKUser;
     private boolean isACK;
     private boolean isAction;

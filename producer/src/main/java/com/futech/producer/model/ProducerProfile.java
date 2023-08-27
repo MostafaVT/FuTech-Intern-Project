@@ -13,7 +13,6 @@ import java.util.List;
 @Setter
 @ToString
 public class ProducerProfile {
-    @JsonIgnore
     private int id;
     private String name;
     private InetAddress IP;

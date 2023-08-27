@@ -151,7 +151,7 @@ export default function altfooter() {
           class="text-center p-3"
           style={{ "background-color": "rgba(0, 0, 0, 0.2)" }}
         >
-          © 2020 Copyright:
+          © {new Date().getFullYear()} Copyright:
           <a class="text-white" href="http://www.futech-eg.com/index.php">
             FuTech-Systems
           </a>

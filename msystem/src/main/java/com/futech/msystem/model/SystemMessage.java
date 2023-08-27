@@ -14,13 +14,15 @@ import java.util.Date;
 public class SystemMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private int id;
     private String source;
     private String content;
     @Temporal(TemporalType.TIMESTAMP)
     private Date sentTimeStamp;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date ACKTimeStamp;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date actionTimeStamp;
     @OneToOne(cascade = CascadeType.ALL)
     private User ACKUser;
     private boolean isACK;
