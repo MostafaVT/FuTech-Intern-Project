@@ -5,8 +5,14 @@ import ScrollspyACK from "./ScrollspyACK";
 import ActionTab from "./ActionTab";
 import ProducerProfile from "./ProducerProfileTab";
 import MapTap from "./MapTap";
+import { mapOptions } from "./MapConfig";
+import { useJsApiLoader } from "@react-google-maps/api";
 
 export default function HomeStruct() {
+  const { isLoaded } = useJsApiLoader({
+    id: mapOptions.googleMapApiKey,
+    googleMapsApiKey: mapOptions.googleMapApiKey,
+  });
   return (
     <div>
       <Container>
@@ -26,7 +32,7 @@ export default function HomeStruct() {
             <ProducerProfile></ProducerProfile>
           </Col>
           <Col>
-            <MapTap></MapTap>
+            <MapTap isLoaded={isLoaded}></MapTap>
           </Col>
         </Row>
       </Container>

@@ -20,7 +20,7 @@ public class ProducerProfile {
     private int id;
     private String name;
     private InetAddress IP;
-    private String location;
+    private String location;//url-map
     private String currentBrokerConnection;
 
     public ProducerProfile(){}

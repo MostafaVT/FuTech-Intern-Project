@@ -1,11 +1,11 @@
 package com.futech.producer.controller;
 
 import com.futech.producer.component.MessageProducer;
-import com.futech.producer.model.SystemMessage;
+import com.futech.producer.config.MQTTConfig;
+import com.futech.producer.dto.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/jms")
@@ -17,9 +17,9 @@ public class ProducerController {
     private MessageProducer messageProducer;
 
     @PostMapping("/publishMessage")
-    public ResponseEntity<String> publishMessage(@RequestBody SystemMessage systemMessage) {
+    public ResponseEntity<String> publishMessage(@RequestBody Message message) {
         try {
-            messageProducer.sendTo("test", systemMessage);
+            messageProducer.sendTo("test", message);
             return new ResponseEntity<>("Sent.", HttpStatus.OK);
 
         } catch (Exception e) {

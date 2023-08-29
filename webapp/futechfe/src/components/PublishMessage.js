@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Container, Paper, Button } from "@mui/material";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function PublishMessage() {
   const paperStyle = { padding: "50px 20px", margin: "20px auto" };
@@ -44,7 +45,7 @@ export default function PublishMessage() {
 
   return (
     <Container>
-      <Paper elevation={3} style={paperStyle}>
+      {/* <Paper elevation={3} style={paperStyle}>
         <h4>Publish Message to the Broker</h4>
         <form
           component="form"
@@ -80,29 +81,39 @@ export default function PublishMessage() {
             Publish
           </Button>
         </form>
-      </Paper>
+      </Paper> */}
       <Paper elevation={3} style={paperStyle}>
         <h4>Live Messages</h4>
-        {msgs.map((msg) => (
-          <Paper
-            elevation={6}
-            style={{ margin: "10px", padding: "15px", textAlign: "left" }}
-            key={msg.id}
+        <div id="parentScrollDiv" style={{ height: 500, overflow: "auto" }}>
+          <InfiniteScroll
+            dataLength={msgs.length}
+            hasMore={true}
+            // loader={<p>WAIT...</p>}
+            endMessage={<p>200 message limit has been reached.</p>}
+            scrollableTarget="parentScrollDiv"
           >
-            ID : {msg.id}
-            <br></br>
-            Source : {msg.source}
-            <br></br>
-            Content : {msg.content}
-            <Button
-              variant="contained"
-              onClick={handleClickACK.bind(this, msg.id)}
-              style={{ padding: "5px", margin: "5px" }}
-            >
-              Acknowledged
-            </Button>
-          </Paper>
-        ))}
+            {msgs.map((msg) => (
+              <Paper
+                elevation={6}
+                style={{ margin: "10px", padding: "15px", textAlign: "left" }}
+                key={msg.id}
+              >
+                ID : {msg.id}
+                <br></br>
+                Source : {msg.source}
+                <br></br>
+                Content : {msg.content}
+                <Button
+                  variant="contained"
+                  onClick={handleClickACK.bind(this, msg.id)}
+                  style={{ padding: "5px", margin: "5px" }}
+                >
+                  Acknowledged
+                </Button>
+              </Paper>
+            ))}
+          </InfiniteScroll>
+        </div>
       </Paper>
     </Container>
   );
