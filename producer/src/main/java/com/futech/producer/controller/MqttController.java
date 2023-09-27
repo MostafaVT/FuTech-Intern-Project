@@ -2,6 +2,7 @@ package com.futech.producer.controller;
 
 import com.futech.producer.config.MQTTConfig;
 import com.futech.producer.dto.MQTTMessage;
+import com.futech.producer.dto.MQTTMessagePayload;
 import com.futech.producer.exceptions.ExceptionMessages;
 import com.futech.producer.exceptions.MqttException;
 import jakarta.validation.Valid;
@@ -25,7 +26,13 @@ public class MqttController {
             throw new MqttException(ExceptionMessages.SOME_PARAMETERS_INVALID);
         }
 
-        MqttMessage mqttMessage = new MqttMessage(message.getMessage().getBytes());
+        MqttMessage mqttMessage =
+                new MqttMessage(message.getMessage()
+                        .payloadFormater(message.getMessage().getMqttAttribute1(),
+                                message.getMessage().getMqttAttribute2()).getBytes());
+
+        System.out.println(message.getMessage().toString());
+
         mqttMessage.setQos(message.getQos());
         mqttMessage.setRetained(message.getRetained());
 
@@ -41,7 +48,7 @@ public class MqttController {
         MQTTConfig.getInstance().subscribeWithResponse(topic, (s, mqttMessage) -> {
             MQTTMessage mqttMessageALT = new MQTTMessage();
             mqttMessageALT.setId(mqttMessage.getId());
-            mqttMessageALT.setMessage(new String(mqttMessage.getPayload()));
+           // mqttMessageALT.setMessage(new String(mqttMessage.getPayload()));
             mqttMessageALT.setQos(mqttMessage.getQos());
             messages.add(mqttMessageALT);
             countDownLatch.countDown();

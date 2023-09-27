@@ -19,7 +19,7 @@ import java.util.Map;
 public class MQTTConfig {
 
     private static final String MQTT_PUBLISHER_ID = "spring-server";
-    private static final String MQTT_SERVER_ADDRES= "tcp://127.0.0.1:1883";
+    private static final String MQTT_SERVER_ADDRES= "tcp://41.130.145.53:1883";
     private static IMqttClient instance;
 
     public static IMqttClient getInstance() {

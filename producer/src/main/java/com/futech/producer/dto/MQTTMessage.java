@@ -18,8 +18,7 @@ public class MQTTMessage {
     private String topic;
 
     @NotNull
-    @Size(min = 1,max = 255)
-    private String message;
+    private MQTTMessagePayload message;
 
     @NotNull
     private Boolean retained;

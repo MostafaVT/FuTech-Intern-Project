@@ -1,18 +1,11 @@
 package com.futech.msystem.config;
+
 import com.futech.msystem.exceptions.MqttException;
-import com.futech.msystem.model.SystemMessage;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
-import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
-import org.springframework.jms.support.converter.MessageConverter;
-import org.springframework.jms.support.converter.MessageType;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Configuration
 @EnableJms

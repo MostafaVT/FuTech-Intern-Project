@@ -17,6 +17,7 @@ public class SystemMessage {
     private int id;
     private String source;
     private String content;
+    //private String mapURL;
     @Temporal(TemporalType.TIMESTAMP)
     private Date sentTimeStamp;
     @OneToOne(cascade = CascadeType.ALL)
